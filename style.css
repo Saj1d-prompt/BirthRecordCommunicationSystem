@@ -1,0 +1,26 @@
+.header{
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.loginButton{
+    background-color: white;
+    border: none;
+    color: #0077b6;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
