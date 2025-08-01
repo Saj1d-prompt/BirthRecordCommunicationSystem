@@ -137,3 +137,46 @@
   font-size: 14px;
   color: #444;
 }
+
+
+.dashboardStats {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.dashboardStats h2 {
+  font-size: 32px;
+  color: #0077b6;
+  margin-bottom: 40px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.statBox {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  min-width: 200px;
+}
+
+.statBox:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.statNumber {
+  font-size: 40px;
+  color: #023e8a;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.statBox p {
+  font-size: 18px;
+  color: #555;
+}
