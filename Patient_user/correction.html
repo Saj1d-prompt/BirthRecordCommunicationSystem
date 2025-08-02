@@ -264,6 +264,29 @@
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
         
+        .correction-field {
+            display: none;
+        }
+        
+        .correction-field.show {
+            display: block;
+        }
+        
+        .gender-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .gender-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .gender-option input {
+            margin-right: 0.5rem;
+        }
+        
         /* Payment Section */
         .payment-section {
             background-color: #f8f9fa;
@@ -459,7 +482,7 @@
         <div class="container nav-container">
             <div class="logo">
                 <i class="fas fa-certificate"></i>
-                <span>BirthCert Portal</span>
+                <span>Birth Record Communication System <i>Parents Portal</i></span>
             </div>
             <ul class="nav-links">
                 <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
@@ -492,23 +515,26 @@
                     <div class="survey-section">
                         <p class="survey-question">Select the information that needs correction:</p>
                         <div class="survey-options">
-                            <label class="option-card selected">
-                                <input type="checkbox" name="correction-type" checked> Child's Name
+                            <label class="option-card" data-field="name">
+                                <input type="checkbox" name="correction-type"> Name
                             </label>
-                            <label class="option-card">
+                            <label class="option-card" data-field="gender">
+                                <input type="checkbox" name="correction-type"> Gender
+                            </label>
+                            <label class="option-card" data-field="dob">
                                 <input type="checkbox" name="correction-type"> Date of Birth
                             </label>
-                            <label class="option-card">
+                            <label class="option-card" data-field="birthplace">
                                 <input type="checkbox" name="correction-type"> Place of Birth
                             </label>
-                            <label class="option-card">
-                                <input type="checkbox" name="correction-type"> Parent's Name
+                            <label class="option-card" data-field="father">
+                                <input type="checkbox" name="correction-type"> Father's Name
                             </label>
-                            <label class="option-card">
-                                <input type="checkbox" name="correction-type"> Parent's ID
+                            <label class="option-card" data-field="mother">
+                                <input type="checkbox" name="correction-type"> Mother's Name
                             </label>
-                            <label class="option-card">
-                                <input type="checkbox" name="correction-type"> Other Information
+                            <label class="option-card" data-field="address">
+                                <input type="checkbox" name="correction-type"> Permanent Address
                             </label>
                         </div>
                     </div>
@@ -519,28 +545,126 @@
                     </div>
                     
                     <div class="action-buttons">
-                        <button class="btn btn-primary">Save & Continue</button>
+                        <button class="btn btn-primary" id="continue-to-correction">Save & Continue</button>
                     </div>
                 </div>
 
                 <!-- Step 2: Correction Form -->
-                <div class="process-step">
+                <div class="process-step" id="correction-step">
                     <div class="step-header">
                         <div class="step-number">2</div>
                         <h2 class="step-title">Provide Correct Information</h2>
                     </div>
                     
-                    <form class="correction-form">
-                        <div class="form-group">
-                            <label class="form-label">Current Child's Name</label>
+                    <form class="correction-form" id="correction-form">
+                        <!-- Name Correction -->
+                        <div class="form-group correction-field" id="name-field">
+                            <label class="form-label">Current Name</label>
                             <input type="text" class="form-control" value="John Michael Smith" readonly>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Correct Child's Name</label>
+                            
+                            <label class="form-label">Correct Name</label>
                             <input type="text" class="form-control" placeholder="Enter correct name">
                         </div>
                         
+                        <!-- Gender Correction -->
+                        <div class="form-group correction-field" id="gender-field">
+                            <label class="form-label">Current Gender</label>
+                            <input type="text" class="form-control" value="Male" readonly>
+                            
+                            <label class="form-label">Correct Gender</label>
+                            <div class="gender-options">
+                                <label class="gender-option">
+                                    <input type="radio" name="correct-gender" value="Male"> Male
+                                </label>
+                                <label class="gender-option">
+                                    <input type="radio" name="correct-gender" value="Female"> Female
+                                </label>
+                                <label class="gender-option">
+                                    <input type="radio" name="correct-gender" value="Other"> Other
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Date of Birth Correction -->
+                        <div class="form-group correction-field" id="dob-field">
+                            <label class="form-label">Current Date of Birth</label>
+                            <input type="text" class="form-control" value="15 January 1990" readonly>
+                            
+                            <label class="form-label">Correct Date of Birth (in words)</label>
+                            <input type="text" class="form-control" placeholder="e.g. Fifteen January Nineteen Ninety">
+                            
+                            <label class="form-label">Correct Date of Birth (numeric)</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        
+                        <!-- Birth Place Correction -->
+                        <div class="form-group correction-field full-width" id="birthplace-field">
+                            <label class="form-label">Current Birth Place</label>
+                            <input type="text" class="form-control" value="Village: Green Valley, Post: GP, Union: North, Upazila: Metro, District: Capital, Country: Bangladesh" readonly>
+                            
+                            <label class="form-label">Correct Birth Place</label>
+                            <div class="correction-form">
+                                <div class="form-group">
+                                    <label class="form-label">Village</label>
+                                    <input type="text" class="form-control" placeholder="Enter village name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Post</label>
+                                    <input type="text" class="form-control" placeholder="Enter post name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Union</label>
+                                    <input type="text" class="form-control" placeholder="Enter union name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Upazila</label>
+                                    <input type="text" class="form-control" placeholder="Enter upazila name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">District</label>
+                                    <input type="text" class="form-control" placeholder="Enter district name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Country</label>
+                                    <input type="text" class="form-control" value="Bangladesh" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Father's Name Correction -->
+                        <div class="form-group correction-field" id="father-field">
+                            <label class="form-label">Current Father's Name</label>
+                            <input type="text" class="form-control" value="Robert William Smith" readonly>
+                            
+                            <label class="form-label">Correct Father's Name</label>
+                            <input type="text" class="form-control" placeholder="Enter correct father's name">
+                            
+                            <label class="form-label">Father's Nationality</label>
+                            <input type="text" class="form-control" placeholder="Enter nationality">
+                        </div>
+                        
+                        <!-- Mother's Name Correction -->
+                        <div class="form-group correction-field" id="mother-field">
+                            <label class="form-label">Current Mother's Name</label>
+                            <input type="text" class="form-control" value="Sarah Elizabeth Smith" readonly>
+                            
+                            <label class="form-label">Correct Mother's Name</label>
+                            <input type="text" class="form-control" placeholder="Enter correct mother's name">
+                            
+                            <label class="form-label">Mother's Nationality</label>
+                            <input type="text" class="form-control" placeholder="Enter nationality">
+                        </div>
+                        
+                        <!-- Address Correction -->
+                        <div class="form-group correction-field full-width" id="address-field">
+                            <label class="form-label">Current Permanent Address</label>
+                            <input type="text" class="form-control" value="123 Main Street, Apartment 4B, Metro City, Capital District, Bangladesh" readonly>
+                            
+                            <label class="form-label">Correct Permanent Address</label>
+                            <textarea class="form-control" placeholder="Enter full permanent address" rows="3"></textarea>
+                        </div>
+                        
+                        <!-- Supporting Documents -->
                         <div class="form-group full-width">
                             <label class="form-label">Supporting Documents</label>
                             <input type="file" class="form-control">
@@ -549,13 +673,13 @@
                     </form>
                     
                     <div class="action-buttons">
-                        <button class="btn">Back</button>
-                        <button class="btn btn-primary">Save & Continue</button>
+                        <button class="btn" id="back-to-survey">Back</button>
+                        <button class="btn btn-primary" id="continue-to-payment">Save & Continue</button>
                     </div>
                 </div>
 
                 <!-- Step 3: Payment -->
-                <div class="process-step">
+                <div class="process-step" id="payment-step">
                     <div class="step-header">
                         <div class="step-number">3</div>
                         <h2 class="step-title">Payment</h2>
@@ -598,7 +722,7 @@
                     </div>
                     
                     <div class="action-buttons">
-                        <button class="btn">Back</button>
+                        <button class="btn" id="back-to-correction">Back</button>
                         <button class="btn btn-primary" id="submit-request">Submit Request</button>
                     </div>
                 </div>
@@ -628,31 +752,80 @@
     </div>
 
     <script>
-        // Simple demonstration of the notification and modal
-        document.getElementById('submit-request').addEventListener('click', function() {
-            document.getElementById('confirmation-modal').style.display = 'flex';
-        });
+        // DOM Elements
+        const optionCards = document.querySelectorAll('.option-card');
+        const correctionFields = document.querySelectorAll('.correction-field');
+        const continueToCorrectionBtn = document.getElementById('continue-to-correction');
+        const backToSurveyBtn = document.getElementById('back-to-survey');
+        const continueToPaymentBtn = document.getElementById('continue-to-payment');
+        const backToCorrectionBtn = document.getElementById('back-to-correction');
+        const submitRequestBtn = document.getElementById('submit-request');
+        const closeModalBtn = document.getElementById('close-modal');
+        const notification = document.getElementById('notification');
+        const confirmationModal = document.getElementById('confirmation-modal');
         
-        document.getElementById('close-modal').addEventListener('click', function() {
-            document.getElementById('confirmation-modal').style.display = 'none';
-            // Show notification after modal is closed
-            const notification = document.getElementById('notification');
-            notification.classList.add('show');
-            
-            // Hide notification after 5 seconds
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 5000);
-        });
+        // Initially hide the correction and payment steps
+        document.getElementById('correction-step').style.display = 'none';
+        document.getElementById('payment-step').style.display = 'none';
         
         // Option card selection
-        const optionCards = document.querySelectorAll('.option-card');
         optionCards.forEach(card => {
             card.addEventListener('click', function() {
                 const checkbox = this.querySelector('input');
                 checkbox.checked = !checkbox.checked;
                 this.classList.toggle('selected', checkbox.checked);
             });
+        });
+        
+        // Continue to correction step
+        continueToCorrectionBtn.addEventListener('click', function() {
+            // Hide survey step and show correction step
+            document.querySelector('.process-step').style.display = 'none';
+            document.getElementById('correction-step').style.display = 'block';
+            
+            // Show only the selected correction fields
+            const selectedOptions = document.querySelectorAll('.option-card.selected');
+            correctionFields.forEach(field => field.classList.remove('show'));
+            
+            selectedOptions.forEach(option => {
+                const fieldId = option.getAttribute('data-field') + '-field';
+                document.getElementById(fieldId).classList.add('show');
+            });
+        });
+        
+        // Back to survey step
+        backToSurveyBtn.addEventListener('click', function() {
+            document.getElementById('correction-step').style.display = 'none';
+            document.querySelector('.process-step').style.display = 'block';
+        });
+        
+        // Continue to payment step
+        continueToPaymentBtn.addEventListener('click', function() {
+            document.getElementById('correction-step').style.display = 'none';
+            document.getElementById('payment-step').style.display = 'block';
+        });
+        
+        // Back to correction step
+        backToCorrectionBtn.addEventListener('click', function() {
+            document.getElementById('payment-step').style.display = 'none';
+            document.getElementById('correction-step').style.display = 'block';
+        });
+        
+        // Submit request
+        submitRequestBtn.addEventListener('click', function() {
+            confirmationModal.style.display = 'flex';
+        });
+        
+        // Close modal
+        closeModalBtn.addEventListener('click', function() {
+            confirmationModal.style.display = 'none';
+            // Show notification after modal is closed
+            notification.classList.add('show');
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
         });
         
         // Payment card selection
