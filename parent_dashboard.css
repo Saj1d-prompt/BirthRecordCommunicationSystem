@@ -54,3 +54,26 @@ body {
   text-decoration: underline;
 }
 
+.pDashboardSection {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.childInfo {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.childInfo h2 {
+  margin-bottom: 15px;
+  color: #023e8a;
+}
+
+.childInfo:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
