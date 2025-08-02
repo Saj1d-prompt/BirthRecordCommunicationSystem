@@ -38,6 +38,19 @@
 
                 <label for="email">Email Address</label>
                 <input type="email" name="email" id="email" required>
+         
+                <label for="reason">Reason for Reissue</label>
+                <select name="reason" id="reason" required>
+                    <option value="">--Select Reason--</option>
+                    <option value="lost">Lost Certificate</option>
+                    <option value="damaged">Damaged Certificate</option>
+                    <option value="correction">Correction in Details</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="message">Additional Information</label>
+                <textarea name="message" id="message" rows="4" placeholder="Any additional details..."></textarea>
+                
 </body>
 </html>
 
