@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Certificate Correction Portal</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links i {
+            margin-right: 5px;
+        }
+        
+        .notification-badge {
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Correction Process */
+        .correction-process {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .process-step {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+        
+        /* Survey Section */
+        .survey-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .survey-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .survey-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .option-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .option-card.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        
+        .option-card input {
+            margin-right: 0.5rem;
+        }
+        
+        .reason-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 100px;
+            margin-top: 1rem;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .reason-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        /* Correction Form */
+        .correction-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .payment-card {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .payment-card:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .payment-card.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .payment-amount {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .correction-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* Confirmation Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .modal-text {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-icon {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-certificate"></i>
+                <span>BirthCert Portal</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> History</a></li>
+                <li>
+                    <a href="#"><i class="fas fa-bell"></i> Notifications <span class="notification-badge">3</span></a>
+                </li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Birth Certificate Correction</h1>
+                <p>Please follow the steps below to request corrections to your birth certificate. You'll need to specify what needs to be corrected, provide the correct information, and complete the payment process.</p>
+            </div>
+
+            <div class="correction-process">
+                <!-- Step 1: Survey -->
+                <div class="process-step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h2 class="step-title">What needs to be corrected?</h2>
+                    </div>
+                    
+                    <div class="survey-section">
+                        <p class="survey-question">Select the information that needs correction:</p>
+                        <div class="survey-options">
+                            <label class="option-card selected">
+                                <input type="checkbox" name="correction-type" checked> Child's Name
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="correction-type"> Date of Birth
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="correction-type"> Place of Birth
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="correction-type"> Parent's Name
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="correction-type"> Parent's ID
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="correction-type"> Other Information
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="survey-section">
+                        <p class="survey-question">Reason for correction:</p>
+                        <textarea class="reason-textarea" placeholder="Please explain why this correction is needed..."></textarea>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">Save & Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Correction Form -->
+                <div class="process-step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h2 class="step-title">Provide Correct Information</h2>
+                    </div>
+                    
+                    <form class="correction-form">
+                        <div class="form-group">
+                            <label class="form-label">Current Child's Name</label>
+                            <input type="text" class="form-control" value="John Michael Smith" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Correct Child's Name</label>
+                            <input type="text" class="form-control" placeholder="Enter correct name">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Supporting Documents</label>
+                            <input type="file" class="form-control">
+                            <small class="text-muted">Upload any supporting documents for this correction (max 5MB)</small>
+                        </div>
+                    </form>
+                    
+                    <div class="action-buttons">
+                        <button class="btn">Back</button>
+                        <button class="btn btn-primary">Save & Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment -->
+                <div class="process-step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h2 class="step-title">Payment</h2>
+                    </div>
+                    
+                    <div class="payment-section">
+                        <p>Please select your preferred payment method and complete the payment to process your correction request.</p>
+                        
+                        <div class="payment-options">
+                            <div class="payment-card selected">
+                                <div class="payment-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <h3>Credit/Debit Card</h3>
+                                <p>Pay securely with your card</p>
+                            </div>
+                            
+                            <div class="payment-card">
+                                <div class="payment-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3>Mobile Payment</h3>
+                                <p>Pay via mobile money</p>
+                            </div>
+                            
+                            <div class="payment-card">
+                                <div class="payment-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <h3>Bank Transfer</h3>
+                                <p>Direct bank transfer</p>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-amount">
+                            Correction Fee: <b>৳</b>200.00
+                        </div>
+                        
+                        <button class="btn btn-secondary btn-block">Proceed to Payment</button>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn">Back</button>
+                        <button class="btn btn-primary" id="submit-request">Submit Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="modal-title">Request Submitted Successfully!</h2>
+            <p class="modal-text">Your birth certificate correction request has been submitted. You'll receive a notification with collection details once your request is processed.</p>
+            <button class="btn btn-primary" id="close-modal">OK</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-bell notification-icon"></i>
+        <div>
+            <strong>New Update!</strong>
+            <p>Your birth certificate is ready for collection</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple demonstration of the notification and modal
+        document.getElementById('submit-request').addEventListener('click', function() {
+            document.getElementById('confirmation-modal').style.display = 'flex';
+        });
+        
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+            // Show notification after modal is closed
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        });
+        
+        // Option card selection
+        const optionCards = document.querySelectorAll('.option-card');
+        optionCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const checkbox = this.querySelector('input');
+                checkbox.checked = !checkbox.checked;
+                this.classList.toggle('selected', checkbox.checked);
+            });
+        });
+        
+        // Payment card selection
+        const paymentCards = document.querySelectorAll('.payment-card');
+        paymentCards.forEach(card => {
+            card.addEventListener('click', function() {
+                paymentCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
