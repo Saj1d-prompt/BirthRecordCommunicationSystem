@@ -1,7 +1,7 @@
 function login(event){
     event.preventDefault();
     const userID = document.getElementById("userID").value.trim();
-    const password = document.getElementById("password").value;
+    const password = document.getElementById("password").value.trim();
 
     if(password == "parent"){
         window.location.href = "parent_dashboard.html";
