@@ -42,7 +42,6 @@ body {
   padding: 20px;
 }
 
-/* STATS */
 .summaryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -57,4 +56,19 @@ body {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease;
+}
+
+.summaryCard:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.summaryCard h3 {
+  font-size: 28px;
+  color: #023e8a;
+  margin-bottom: 10px;
+}
+
+.summaryCard p {
+  font-size: 16px;
+  color: #555;
 }
