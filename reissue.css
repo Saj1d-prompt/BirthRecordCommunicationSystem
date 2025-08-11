@@ -114,3 +114,13 @@ body {
   display: flex;
   gap: 20px;
 }
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
