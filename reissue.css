@@ -34,3 +34,18 @@ body {
     flex-direction: column;
     gap: 15px;
 }
+
+.reissueForm label {
+    font-weight: bold;
+    color: #242324;
+}
+
+.reissueForm input,
+.reissueForm select,
+.reissueForm textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #e1d7e3f0;
+}
