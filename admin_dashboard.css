@@ -88,11 +88,37 @@ body {
   font-weight: bold;
   color: #0077b6;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .featureCard:hover {
   background-color: #90e0ef;
   color: #03045e;
+}
+
+.analyticsSection h2 {
+  color: #0077b6;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chartContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.chartBox {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+  height: 300px;
 }
