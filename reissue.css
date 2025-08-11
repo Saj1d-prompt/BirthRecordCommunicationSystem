@@ -64,3 +64,36 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+.reissueForm button:hover {
+    background-color: #0056b3;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f8ff;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.header{
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+}
