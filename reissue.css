@@ -5,3 +5,10 @@ body {
     background: #f8eaf9;
 
 }
+
+.reissueSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
