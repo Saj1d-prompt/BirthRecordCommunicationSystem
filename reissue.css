@@ -12,3 +12,13 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+
+.reissueContainer {
+    background: rgb(51, 162, 210);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(40, 40, 40, 0.1);
+    width: 100%;
+    max-width: 500px;
+
+}
