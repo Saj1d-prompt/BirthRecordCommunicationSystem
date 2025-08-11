@@ -22,3 +22,15 @@ body {
     max-width: 500px;
 
 }
+
+.reissueContainer h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #141313;
+}
+
+.reissueForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
