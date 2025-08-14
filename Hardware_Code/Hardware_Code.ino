@@ -7,11 +7,11 @@
 #include <ArduinoJson.h>  // For JSON parsing
 
 // WiFi credentials
-const char* ssid = "Jb";
-const char* password = "17429146";
+const char* ssid = "..........";
+const char* password = ".........";
 
 // Server URL (replace with your local server PHP script)
-const char* serverURL = "http://192.168.0.161/esp32/add_newborn.php";
+const char* serverURL = "http://............./esp32/add_newborn.php";
 
 // HX711 pins
 #define HX711_DOUT 19
@@ -316,3 +316,4 @@ void sendData() {
     lcd.clear();
   }
 }
+
