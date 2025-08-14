@@ -157,3 +157,20 @@ body {
 .smallBtn:hover {
   background-color: #023e8a;
 }
+
+.requestCard {
+  background-color: #e7f5ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
