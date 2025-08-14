@@ -122,3 +122,38 @@ body {
   max-width: 450px;
   height: 300px;
 }
+
+.adminSection {
+  background: white;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.adminSection h2 {
+  color: #023e8a;
+  margin-bottom: 10px;
+}
+
+.adminSection p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.actionBtn,
+.smallBtn {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.actionBtn:hover,
+.smallBtn:hover {
+  background-color: #023e8a;
+}
