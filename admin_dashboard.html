@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard | Birth Record Communication System</title>
     <link rel="stylesheet" href="admin_dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header class="navbar">
@@ -33,6 +38,54 @@
         <div class="summaryCard">
           <h3>📑 43</h3>
           <p>Pending Reissue Requests</p>
+        </div>
+      </section>
+      <section class="progress-activity-wrapper">
+        <div class="progress-overview">
+          <h2><i class="fas fa-chart-line"></i> Vaccination Progress</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h3>Completed</h3>
+              <p class="stat-value">142</p>
+            </div>
+            <div class="stat-card">
+              <h3>Pending</h3>
+              <p class="stat-value">28</p>
+            </div>
+            <div class="stat-card">
+              <h3>Overdue</h3>
+              <p class="stat-value">5</p>
+            </div>
+          </div>
+          <div class="progress-chart">
+            <canvas id="progressChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div class="recent-activity">
+          <h2><i class="fas fa-history"></i> Recent Activity</h2>
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Action</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Today, 10:30 AM</td>
+                <td>Vaccine marked done</td>
+                <td>MR-1</td>
+              </tr>
+              <tr>
+                <td>Today, 9:15 AM</td>
+                <td>Reschedule approved</td>
+                <td>Pentavalent-1</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
       <section class="featuresGrid">
@@ -80,37 +133,42 @@
     <footer class="footer">
       <p>&copy; 2025 Birth Record Monitoring System. Admin Panel</p>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      const genderChart = new Chart(document.getElementById('genderChart'), {
-        type: 'pie',
+      const genderChart = new Chart(document.getElementById("genderChart"), {
+        type: "pie",
         data: {
-          labels: ['Male', 'Female'],
-          datasets: [{
-            data: [2800, 2480],
-            backgroundColor: ['#0077b6', '#90e0ef']
-          }]
+          labels: ["Male", "Female"],
+          datasets: [
+            {
+              data: [2800, 2480],
+              backgroundColor: ["#0077b6", "#90e0ef"],
+            },
+          ],
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: { responsive: true, maintainAspectRatio: false },
       });
 
-      const monthlyChart = new Chart(document.getElementById('monthlyChart'), {
-        type: 'bar',
+      const monthlyChart = new Chart(document.getElementById("monthlyChart"), {
+        type: "bar",
         data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-          datasets: [{
-            label: 'Monthly Registrations',
-            data: [450, 380, 510, 620, 700, 580, 690],
-            backgroundColor: '#48cae4'
-          }]
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          datasets: [
+            {
+              label: "Monthly Registrations",
+              data: [450, 380, 510, 620, 700, 580, 690],
+              backgroundColor: "#48cae4",
+            },
+          ],
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: { responsive: true, maintainAspectRatio: false },
       });
 
       function logout() {
         alert("You have been logged out.");
         window.location.href = "login.html";
       }
-  </script>
+    </script>
+    <script src="adminDashboard.js"></script>
   </body>
 </html>
