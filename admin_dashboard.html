@@ -80,5 +80,37 @@
     <footer class="footer">
       <p>&copy; 2025 Birth Record Monitoring System. Admin Panel</p>
     </footer>
+
+    <script>
+      const genderChart = new Chart(document.getElementById('genderChart'), {
+        type: 'pie',
+        data: {
+          labels: ['Male', 'Female'],
+          datasets: [{
+            data: [2800, 2480],
+            backgroundColor: ['#0077b6', '#90e0ef']
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      const monthlyChart = new Chart(document.getElementById('monthlyChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Monthly Registrations',
+            data: [450, 380, 510, 620, 700, 580, 690],
+            backgroundColor: '#48cae4'
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      function logout() {
+        alert("You have been logged out.");
+        window.location.href = "login.html";
+      }
+  </script>
   </body>
 </html>
