@@ -251,3 +251,11 @@ h1 {
 .btn-center:hover {
   opacity: 0.85;
 }
+
+.history-item {
+  background: #e7f5ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  border-left: 4px solid #0077b6;
+}
