@@ -81,3 +81,31 @@ h1 {
 .btn-back:hover {
   background-color: #48cae4;
 }
+
+.vaccine-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #48cae4;
+}
+
+.vaccine-header h1 {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.tag.free {
+  background: #4caf50;
+  color: white;
+}
+
+.tag.critical, .tag.preterm {
+  background: #ff9800;
+  color: white;
+}
