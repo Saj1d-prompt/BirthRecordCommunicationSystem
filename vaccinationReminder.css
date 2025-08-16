@@ -218,3 +218,36 @@ h1 {
   background: #4caf50;
   color: white;
 }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.btn-download,
+.btn-done {
+  background: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-center {
+  background: #48cae4;
+  color: #03045e;
+}
+
+.btn-not-done {
+  background: #f44336;
+  color: white;
+}
+
+.btn-download:hover,
+.btn-center:hover {
+  opacity: 0.85;
+}
