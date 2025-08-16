@@ -109,3 +109,86 @@ h1 {
   background: #ff9800;
   color: white;
 }
+
+.btn-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background-color: #90e0ef;
+  color: #03045e;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.btn-back:hover {
+  background-color: #48cae4;
+}
+
+/* ===== VACCINE HEADER ===== */
+.vaccine-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #48cae4;
+}
+
+.vaccine-header h1 {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.tag.free {
+  background: #4caf50;
+  color: white;
+}
+
+.tag.critical, .tag.preterm {
+  background: #ff9800;
+  color: white;
+}
+
+/* ===== TABLES ===== */
+.schedule-table, .epi-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+.schedule-table th, .schedule-table td,
+.epi-table th, .epi-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.schedule-table th {
+  background-color: #48cae4;
+  color: white;
+}
+
+.epi-table th {
+  background-color: #0077b6;
+  color: white;
+  font-weight: bold;
+}
+
+.schedule-table tr:nth-child(even),
+.epi-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.critical {
+  background-color: #fff3e0 !important;
+}
+
+.supplement {
+  background-color: #e8f4f8 !important;
+}
