@@ -66,3 +66,18 @@ h1 {
 .nav-links li a:hover {
   text-decoration: underline;
 }
+
+.btn-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background-color: #90e0ef;
+  color: #03045e;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.btn-back:hover {
+  background-color: #48cae4;
+}
