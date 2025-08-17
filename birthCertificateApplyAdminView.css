@@ -46,3 +46,37 @@ body {
     left: 0;
     right: 0;
 }
+
+.container {
+  padding: 20px;
+}
+
+.container h2 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+/* Table */
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.applications-table th {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.applications-table th {
+  background: #0d91d8;
+  color: white;
+}
+
+.applications-table tr:hover {
+  background: #f9f9f9;
+}
