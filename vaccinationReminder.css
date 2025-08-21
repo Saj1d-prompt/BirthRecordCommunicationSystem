@@ -126,7 +126,6 @@ h1 {
   background-color: #48cae4;
 }
 
-/* ===== VACCINE HEADER ===== */
 .vaccine-header {
   margin-bottom: 20px;
   padding-bottom: 15px;
@@ -156,7 +155,7 @@ h1 {
   color: white;
 }
 
-/* ===== TABLES ===== */
+
 .schedule-table,
 .epi-table {
   width: 100%;
@@ -335,4 +334,16 @@ h1 {
 
 .btn-reject:hover {
   background-color: #d32f2f;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 14px;
 }
