@@ -278,3 +278,32 @@ h1 {
 .preterm-notice h3 {
   color: #03045e;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .dashboard {
+    padding: 15px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .schedule-table,
+  .epi-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
