@@ -307,3 +307,32 @@ h1 {
     white-space: nowrap;
   }
 }
+
+.btn-accept,
+.btn-reject {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.btn-accept {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-reject {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-accept:hover {
+  background-color: #45a049;
+}
+
+.btn-reject:hover {
+  background-color: #d32f2f;
+}
