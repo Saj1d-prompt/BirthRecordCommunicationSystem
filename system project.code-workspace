@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "../pic/micro project/system project"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Birth Record"
+  }
+}
