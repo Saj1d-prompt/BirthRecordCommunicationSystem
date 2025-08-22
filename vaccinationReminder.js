@@ -11,4 +11,22 @@ document.addEventListener("DOMContentLoaded", function () {
       findCenterBtn.addEventListener("click", handleFindCenter);
     }
   }
+  if (isEpiSchedule) {
+    const isPreterm = false;
+    const weeksEarly = 4;
+    if (isPreterm) {
+      applyPretermAdjustment(weeksEarly);
+    }
+  }
+  function handleDownloadCertificate() {
+    try {
+      console.log("Generating vaccination certificate...");
+      alert(
+        "Certificate downloaded (simulated). In a real app, this would generate a PDF."
+      );
+    } catch (error) {
+      console.error("Certificate download failed:", error);
+      alert("Failed to generate certificate. Please try again.");
+    }
+  }
 });
