@@ -29,4 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Failed to generate certificate. Please try again.");
     }
   }
+  function handleFindCenter() {
+    try {
+      console.log("Finding nearby EPI centers...");
+      alert(
+        "Opening map with nearby EPI centers (simulated). In a real app, this would use Google Maps API."
+      );
+    } catch (error) {
+      console.error("EPI center lookup failed:", error);
+      alert("Failed to load EPI centers. Please check your connection.");
+    }
+  }
 });
