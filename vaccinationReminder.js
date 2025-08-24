@@ -40,4 +40,24 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Failed to load EPI centers. Please check your connection.");
     }
   }
+  function applyPretermAdjustment(weeksEarly) {
+    try {
+      const notice = document.createElement("div");
+      notice.className = "preterm-alert";
+      notice.innerHTML = `
+          <h4><i class="fas fa-baby"></i> Preterm Adjustment Applied</h4>
+          <p>Your baby was born <strong>${weeksEarly} weeks early</strong>. 
+          Vaccines are scheduled based on birth date, not gestational age.</p>
+        `;
+
+      const noticeContainer = document.querySelector(".preterm-notice");
+      if (noticeContainer) {
+        noticeContainer.appendChild(notice);
+      }
+    }
+    catch (error) {
+      console.error("Preterm adjustment failed:", error);
+      alert("Failed to apply preterm adjustment. Please try again.");
+    }
+  }
 });
