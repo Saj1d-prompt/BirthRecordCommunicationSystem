@@ -1,61 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correction View | Birth Record Communication System</title>
-    <link rel="stylesheet" href="correctionViewAdmin.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Manage Correction Requests</title>
+  <link rel="stylesheet" href="correctionViewAdmin.css">
 </head>
 <body>
-    
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>Birth Record Communication System</h1>
     <nav>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-certificate"></i>
-                <span>Birth Record Communication System <i>Parents Portal</i></span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fas fa-history"></i> History</a></li>
-                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
+      <ul class="nav-links">
+        <li><a href="admin_dashboard.html">Home</a></li>
+        <li><a href="#">Birth Records</a></li>
+        <li><a href="#">Vaccination Data</a></li>
+        <li><a href="#">Correction Requests</a></li>
+        <li><a href="#">Reissue Requests</a></li>
+        <li><a href="index.html" onclick="logout()">Logout</a></li>
+      </ul>
     </nav>
+  </header>
 
-    
-    <div class="main-content">
-        <div class="container">
-            <div class="page-header">
-                <h1>Correction Request Details</h1>
-                <p>Here are the details of your submitted correction request.</p>
-            </div>
+  <!-- Main Content -->
+  <main class="viewMain">
+    <h2>All Correction Requests</h2>
 
-           
-            <div class="details-card">
-                <h2>Personal Information</h2>
-                <p><strong>Request ID:</strong> #BRCS-2025-001</p>
-                <p><strong>Applicant Name:</strong> John Michael Smith</p>
-                <p><strong>Submitted On:</strong> 23 August 2025</p>
-            </div>
+    <!-- Requests Table -->
+    <table class="requestsTable">
+      <thead>
+        <tr>
+          <th>Request ID</th>
+          <th>Applicant</th>
+          <th>Corrections</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="showDetails('CORR-2025-014')">
+          <td>CORR-2025-014</td>
+          <td>John Smith</td>
+          <td>Name, DOB</td>
+          <td>Aug 20, 2025</td>
+          <td>
+            <button class="approve">Approve</button>
+            <button class="reject">Reject</button>
+          </td>
+        </tr>
+        <tr onclick="showDetails('CORR-2025-015')">
+          <td>CORR-2025-015</td>
+          <td>Mary Johnson</td>
+          <td>Father’s Name</td>
+          <td>Aug 21, 2025</td>
+          <td>
+            <button class="approve">Approve</button>
+            <button class="reject">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <div class="details-card">
-                <h2>Correction Summary</h2>
-                <ul>
-                    <li><strong>Field:</strong> Name → <span class="highlight">Corrected to: John M. Smith</span></li>
-                    <li><strong>Field:</strong> Date of Birth → <span class="highlight">Corrected to: 16 January 1990</span></li>
-                </ul>
-            </div>
+    <!-- Request Details Section -->
+    <section id="requestDetails" class="details-card" style="display:none;">
+      <h2>Request Details</h2>
+      <table>
+        <tr><th>Request ID</th><td id="detail-id"></td></tr>
+        <tr><th>Applicant</th><td id="detail-applicant"></td></tr>
+        <tr><th>Date of Birth</th><td id="detail-dob"></td></tr>
+        <tr><th>Father’s Name</th><td id="detail-father"></td></tr>
+        <tr><th>Mother’s Name</th><td id="detail-mother"></td></tr>
+        <tr><th>Reason</th><td id="detail-reason"></td></tr>
+        <tr><th>Submitted On</th><td id="detail-date"></td></tr>
+        <tr><th>Payment</th><td id="detail-payment"></td></tr>
+      </table>
+    </section>
+  </main>
 
-            <div class="details-card">
-                <h2>Payment Information</h2>
-                <p><strong>Amount Paid:</strong> ৳200.00</p>
-                <p><strong>Payment Method:</strong> Credit/Debit Card</p>
-                <p><strong>Status:</strong> <span class="status success">Paid</span></p>
-            </div>
-        </div>
-    </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Birth Record Communication System | Admin Panel</p>
+  </footer>
+
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "login.html";
+    }
+
+    // Dummy details data
+    const requestsData = {
+      "CORR-2025-014": {
+        applicant: "John Smith",
+        dob: "15 Jan 1990",
+        father: "Robert William Smith",
+        mother: "Sarah Elizabeth Smith",
+        reason: "Spelling mistake in name, incorrect DOB",
+        date: "Aug 20, 2025",
+        payment: "৳200.00 (Card)"
+      },
+      "CORR-2025-015": {
+        applicant: "Mary Johnson",
+        dob: "05 Feb 1992",
+        father: "David Johnson",
+        mother: "Emma Johnson",
+        reason: "Typo in father’s name",
+        date: "Aug 21, 2025",
+        payment: "৳200.00 (Mobile Payment)"
+      }
+    };
+
+    function showDetails(requestId) {
+      const details = requestsData[requestId];
+      if (!details) return;
+
+      document.getElementById("detail-id").textContent = requestId;
+      document.getElementById("detail-applicant").textContent = details.applicant;
+      document.getElementById("detail-dob").textContent = details.dob;
+      document.getElementById("detail-father").textContent = details.father;
+      document.getElementById("detail-mother").textContent = details.mother;
+      document.getElementById("detail-reason").textContent = details.reason;
+      document.getElementById("detail-date").textContent = details.date;
+      document.getElementById("detail-payment").textContent = details.payment;
+
+      document.getElementById("requestDetails").style.display = "block";
+    }
+  </script>
 </body>
 </html>
