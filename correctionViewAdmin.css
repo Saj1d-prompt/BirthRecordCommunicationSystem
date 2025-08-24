@@ -1,0 +1,152 @@
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f8ff;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #0077b6;
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Main */
+.viewMain {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.viewMain h2 {
+  margin-bottom: 20px;
+  color: #023e8a;
+  text-align: center;
+}
+
+.requestsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.requestsTable th,
+.requestsTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.requestsTable th {
+  background-color: #0077b6;
+  color: white;
+}
+
+.requestsTable tr:hover {
+  background-color: #f1f9ff;
+  cursor: pointer;
+}
+
+
+/* Status labels */
+.status {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.status.pending { background: #ffc107; color: black; }
+.status.approved { background: #28a745; color: white; }
+.status.rejected { background: #dc3545; color: white; }
+
+/* Buttons */
+button.approve, button.reject {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.approve {
+  background: #28a745;
+  color: white;
+}
+button.approve:hover { background: #218838; }
+
+button.reject {
+  background: #dc3545;
+  color: white;
+}
+button.reject:hover { background: #b52a37; }
+
+/* Details Card */
+.details-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.details-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-card th,
+.details-card td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.details-card th {
+  width: 220px;
+  color: #0077b6;
+  font-weight: 600;
+}
+
+/* Footer */
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
