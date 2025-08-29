@@ -2,7 +2,7 @@
 
 include "database.php";
 
-$sql = "SELECT * FROM newborn_t";
+$sql = "SELECT * FROM newborns";
 
 $result = $conn->query($sql);
 
@@ -57,7 +57,7 @@ $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
             ?>
                 <tr>
-                    <td><?php echo $row['birthRegistrationNum']; ?></td>
+                    <td><?php echo $row['reg_number']; ?></td>
                     <td><?php echo $row['fullName']; ?></td>
                     <td><?php echo $row['dateofBirth']; ?></td>
                     <td><?php echo $row['gender']; ?></td>
