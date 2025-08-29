@@ -1,3 +1,37 @@
+<?php
+include "database.php";
+
+if (isset($_POST['submit'])) {
+    $brn = $_POST['brn'];
+    $child_name = $_POST['child_name'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $place_of_birth = $_POST['place_of_birth'];
+    $father_name = $_POST['father_name'];
+    $mother_name = $_POST['mother_name'];
+    $address = $_POST['address'];
+    $contact = $_POST['contact'];
+
+    $sql = "INSERT INTO `newborn_t`(`birthRegistrationNum`,`gender`, `dateofBirth`, `fullName`, `fatherName`, `motherName`, `permanentAddress`, `contactNum`) VALUES ('$brn','$gender','$dob','$child_name','$father_name','$mother_name','$address','$contact')";
+
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+
+      echo "<script>console.log('New record created successfully!');</script>";
+
+    }else{
+
+      echo "Error:". $sql . "<br>". $conn->error;
+
+    } 
+
+    $conn->close();
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +77,7 @@
             </select>
 
             <label for="place_of_birth">Place of Birth</label>
-            <input type="text" id="place_of_birth" name="place_of_birth" placeholder="Enter place of birth" required>
+            <input type="text" id="place_of_birth" name="place_of_birth" placeholder="Enter place of birth">
 
             <label for="father_name">Father's Name</label>
             <input type="text" id="father_name" name="father_name" required>
@@ -57,7 +91,7 @@
             <label for="contact">Contact Number</label>
             <input type="tel" id="contact" name="contact" required>
 
-            <button type="submit" class="submit-btn">Submit Application</button>
+            <button type="submit" class="submit-btn" value="submit" name = "submit">Submit Application</button>
         </form>
     </main>
 
