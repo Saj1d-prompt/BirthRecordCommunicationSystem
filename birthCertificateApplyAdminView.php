@@ -1,3 +1,14 @@
+<?php 
+
+include "database.php";
+
+$sql = "SELECT * FROM newborn_t";
+
+$result = $conn->query($sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,25 +44,36 @@
                 <th>Gender</th>
                 <th>Father's Name</th>
                 <th>Mother's Name</th>
+                <th>Location</th>
                 <th>Contact</th>
                 <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
+                <?php
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+            ?>
                 <tr>
-                    <td>BRN123456</td>
-                    <td>Rahim Uddin</td>
-                    <td>2025-01-15</td>
-                    <td>Male</td>
-                    <td>Abdul Karim</td>
-                    <td>Ayesha Begum</td>
-                    <td>017XXXXXXXX</td>
+                    <td><?php echo $row['birthRegistrationNum']; ?></td>
+                    <td><?php echo $row['fullName']; ?></td>
+                    <td><?php echo $row['dateofBirth']; ?></td>
+                    <td><?php echo $row['gender']; ?></td>
+                    <td><?php echo $row['fatherName']; ?></td>
+                    <td><?php echo $row['motherName']; ?></td>
+                    <td><?php echo $row['permanentAddress']; ?></td>
+                    <td><?php echo $row['contactNum']; ?></td>
                     <td>
                         <button class="approve-btn">Approve</button>
                         <button class="reject-btn">Reject</button>
                     </td>
                 </tr>
+                <?php   }
+            }
+            $conn->close(); 
+            ?> 
             </tbody>
         </table>
     </div>
