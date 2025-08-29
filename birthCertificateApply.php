@@ -4,7 +4,6 @@ include "database.php";
 if (isset($_POST['submit'])) {
     $brn = $_POST['brn'];
     $child_name = $_POST['child_name'];
-    $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $place_of_birth = $_POST['place_of_birth'];
     $father_name = $_POST['father_name'];
@@ -12,7 +11,14 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $contact = $_POST['contact'];
 
-    $sql = "INSERT INTO `newborns`(`birthRegistrationNum`,`gender`, `dateofBirth`, `fullName`, `fatherName`, `motherName`, `permanentAddress`, `contactNum`) VALUES ('$brn','$gender','$dob','$child_name','$father_name','$mother_name','$address','$contact')";
+    $sql = "UPDATE `newborns` SET 
+            `fullName` = '$child_name',
+            `fatherName` = '$father_name',
+            `motherName` = '$mother_name',
+            `permanentAddress` = '$address',
+            `contactNum` = '$contact'
+        WHERE `reg_number` = '$brn'";
+
 
     $result = $conn->query($sql);
 
@@ -64,9 +70,6 @@ if (isset($_POST['submit'])) {
 
             <label for="child_name">Child's Full Name</label>
             <input type="text" id="child_name" name="child_name" placeholder="Enter child's name" required>
-
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required>
 
             <label for="gender">Gender</label>
             <select id="gender" name="gender" required>
