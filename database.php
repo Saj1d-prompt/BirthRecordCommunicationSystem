@@ -6,7 +6,7 @@ $username = "root";
 
 $password = "";
 
-$dbname = "birthrecordsystem";
+$dbname = "baby_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

@@ -12,7 +12,17 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $contact = $_POST['contact'];
 
-    $sql = "INSERT INTO `newborn_t`(`birthRegistrationNum`,`gender`, `dateofBirth`, `fullName`, `fatherName`, `motherName`, `permanentAddress`, `contactNum`) VALUES ('$brn','$gender','$dob','$child_name','$father_name','$mother_name','$address','$contact')";
+    // $sql = "INSERT INTO `newborns`(`birthRegistrationNum`,`gender`, `dateofBirth`, `fullName`, `fatherName`, `motherName`, `permanentAddress`, `contactNum`) VALUES ('$brn','$gender','$dob','$child_name','$father_name','$mother_name','$address','$contact')";
+    $sql = "UPDATE `newborns` 
+        SET 
+            `dateofBirth` = '$dob',
+            `fullName` = '$child_name',
+            `fatherName` = '$father_name',
+            `motherName` = '$mother_name',
+            `permanentAddress` = '$address',
+            `contactNum` = '$contact'
+        WHERE `reg_number` = '$brn'";
+
 
     $result = $conn->query($sql);
 
