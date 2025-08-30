@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($password === "admin") {
         $_SESSION['userID'] = $userID;
         $_SESSION['role'] = "admin";
-        header("Location: admin_dashboard.php");
+        header("Location: admin_dashboard.html");
         exit();
     } else {
         echo "<script>alert('Invalid User ID or Password'); window.location.href='login.php';</script>";
