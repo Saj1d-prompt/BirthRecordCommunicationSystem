@@ -54,8 +54,22 @@ document.addEventListener("DOMContentLoaded", function () {
       if (noticeContainer) {
         noticeContainer.appendChild(notice);
       }
-    }
-    catch (error) {
+      const dateCells = document.querySelectorAll(
+        ".schedule-table td:nth-child(2)"
+      );
+      dateCells.forEach((td) => {
+        const originalDate = new Date(td.textContent);
+        if (!isNaN(originalDate.getTime())) {
+          originalDate.setDate(originalDate.getDate() + weeksEarly * 7);
+          td.textContent = originalDate.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+          td.innerHTML += ' <span class="tag preterm">Adjusted</span>';
+        }
+      });
+    } catch (error) {
       console.error("Preterm adjustment failed:", error);
       alert("Failed to apply preterm adjustment. Please try again.");
     }
