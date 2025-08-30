@@ -59,6 +59,42 @@ $row = $result->fetch_assoc();
             <p>Your child is due for <strong>DPT1</strong> on <strong>August 10</strong>. 
                 Please visit your nearest health center or Vaccination Center.</p>
         </div>
+        <div class="applicationStatus">
+            <h3>Birth Certificate Application Request Status</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Birth Registration Number</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo $row['reg_number']; ?></td>
+                        <td><?php echo $row['fullName']; ?></td>
+                        <td><?php echo $row['gender']; ?></td>
+                        <?php 
+                            if ($row['status'] == null) {
+                                $statusClass = "status_pending_app";
+                                $statusText = "Pending";
+                            } elseif (strtolower($row['status']) == "approved") {
+                                $statusClass = "status_approved_app";
+                                $statusText = $row['status'];
+                            } elseif (strtolower($row['status']) == "rejected") {
+                                $statusClass = "status_rejected_app";
+                                $statusText = $row['status'];
+                            } else {
+                                $statusClass = "status_pending_app";
+                                $statusText = $row['status'];
+                            }
+                            ?>
+                            <td><span class="<?php echo $statusClass; ?>"><?php echo $statusText; ?></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="correctionStatus">
             <h3>Correction Request Status</h3>

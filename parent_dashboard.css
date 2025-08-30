@@ -164,3 +164,39 @@ th, td {
     background-color: #f8d7da;
     color: #721c24;
 }
+
+.applicationStatus {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.applicationStatus h3 {
+    margin-bottom: 15px;
+    color: #023e8a;
+}
+
+.status_pending_app {
+    color: #ff9800;
+    font-weight: bold;
+    background: #fff3cd;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.status_approved_app {
+    color: #28a745;
+    font-weight: bold;
+    background: #d4edda;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.status_rejected_app {
+    color: #dc3545;
+    font-weight: bold;
+    background: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
