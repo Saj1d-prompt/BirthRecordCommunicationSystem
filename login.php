@@ -2,8 +2,13 @@
 session_start();
 
 if (isset($_SESSION['userID'])) {
-    header("Location: parent_dashboard.php");
-    exit();
+    if ($_SESSION['password'] === 'parent') {
+        header("Location: parentDashboard.php");
+        exit();
+    } elseif ($_SESSION['password'] === 'admin') {
+        header("Location: adminDashboard.php");
+        exit();
+    }
 }
 ?>
 
@@ -24,12 +29,12 @@ if (isset($_SESSION['userID'])) {
     <section class = "loginSection">
         <div class = "loginContainer">
         <h2>Login to Your Account</h2>
-        <form action="loginProcess.php" method="post" onsubmit="login(event)">
+        <form action="loginProcess.php" method="post">
             <label for="username">User ID:</label>
             <input type="number" id="userID" name="userID" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit" id="loginButton" onclick = "login()">Login</button>
+            <button type="submit" id="loginButton">Login</button>
         </form>
     </div>
     </section>
