@@ -6,6 +6,14 @@ $sql = "SELECT * FROM newborns";
 
 $result = $conn->query($sql);
 
+if (isset($_POST['reg_number']) && isset($_POST['status'])) {
+    $reg_number = $_POST['reg_number'];
+    $status = $_POST['status'];
+
+    $update_sql = "UPDATE newborns SET status='$status' WHERE reg_number='$reg_number'";
+    $conn->query($update_sql);
+}
+
 ?>
 
 
@@ -51,10 +59,9 @@ $result = $conn->query($sql);
             </thead>
 
             <tbody>
-                <?php
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+            <?php if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) { 
+                    $rowStatus = isset($row['status']) && $row['status'] !== '' ? $row['status'] : 'pending';
             ?>
                 <tr>
                     <td><?php echo $row['reg_number']; ?></td>
@@ -66,15 +73,29 @@ $result = $conn->query($sql);
                     <td><?php echo $row['permanentAddress']; ?></td>
                     <td><?php echo $row['contactNum']; ?></td>
                     <td>
-                        <button class="approve-btn">Approve</button>
-                        <button class="reject-btn">Reject</button>
+                        <?php if ($rowStatus === 'pending') { ?>
+                            <form method="post" style="display:inline;">
+                                <input type="hidden" name="reg_number" value="<?php echo $row['reg_number']; ?>">
+                                <input type="hidden" name="status" value="accepted">
+                                <button type="submit" class="approve-btn">Approve</button>
+                            </form>
+                            <form method="post" style="display:inline;">
+                                <input type="hidden" name="reg_number" value="<?php echo $row['reg_number']; ?>">
+                                <input type="hidden" name="status" value="rejected">
+                                <button type="submit" class="reject-btn">Reject</button>
+                            </form>
+                        <?php } else { ?>
+                            <span class="status-<?php echo $rowStatus; ?>">
+                                <?= ucfirst($rowStatus); ?>
+                            </span>
+                        <?php } ?>
                     </td>
                 </tr>
-                <?php   }
-            }
-            $conn->close(); 
-            ?> 
+            <?php 
+                } 
+            } ?>
             </tbody>
+
         </table>
     </div>
 
