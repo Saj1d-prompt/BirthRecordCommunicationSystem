@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['userID'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include "database.php";
+$userID = $_SESSION['userID'];
+
+$sql = "SELECT * FROM newborns WHERE reg_number = $userID";
+
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,11 +42,11 @@
     <section class="pDashboardSection">
         <div class = "childInfo">
             <h2>Newborn Information</h2>
-            <p><strong>Registration No:</strong> 2025BR-0001</p>
-            <p><strong>Gender:</strong> Female</p>
-            <p><strong>Weight:</strong> 3.2 kg</p>
-            <p><strong>Gestation:</strong> 9 Month</p>
-            <p><strong>Location:</strong> Dhaka</p>
+            <p><strong>Registration No:</strong> <?php echo $row['reg_number']; ?></p>
+            <p><strong>Gender:</strong> <?php echo $row['gender']; ?></p>
+            <p><strong>Weight:</strong> <?php echo $row['weight']; ?></p>
+            <p><strong>Gestation:</strong> <?php echo $row['gestation']; ?></p>
+            <p><strong>Location:</strong> <?php echo $row['location']; ?></p>
         </div>
 
         <div class = "pFeatures">

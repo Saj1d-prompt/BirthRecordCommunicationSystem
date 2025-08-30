@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['userID'])) {
+    header("Location: parent_dashboard.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +24,7 @@
     <section class = "loginSection">
         <div class = "loginContainer">
         <h2>Login to Your Account</h2>
-        <form action="#" method="post" onsubmit="login(event)">
+        <form action="loginProcess.php" method="post" onsubmit="login(event)">
             <label for="username">User ID:</label>
             <input type="number" id="userID" name="userID" required>
             <label for="password">Password:</label>
@@ -27,6 +37,6 @@
     <footer class="footer">
         <p>&copy; 2025 Birth Record Monitoring System. All rights reserved.</p>
     </footer>
-    <script src="login.js"></script>
+    <!-- <script src="login.js"></script> -->
 </body>
 </html>
