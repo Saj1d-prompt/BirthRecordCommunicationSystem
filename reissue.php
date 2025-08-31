@@ -59,6 +59,8 @@ include "database.php";
                 <li><a href="#">Vaccination</a></li>
                 <li><a href="reissue.php">Certificate Reissue</a></li>
                 <li><a href="./patient_user/correction.html">Correction Request</a></li>
+                <li><a href="reissue.html">Certificate Reissue</a></li>
+                <li><a href="Patient_user/correctionRequest.html">Correction Request</a></li>
                 <li><a href="index.html" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
