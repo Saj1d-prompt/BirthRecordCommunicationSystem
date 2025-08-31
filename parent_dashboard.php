@@ -29,7 +29,7 @@ $row = $result->fetch_assoc();
         <nav>
             <ul class="nav-links">
                 <li><a href="parent_dashboard.html">Home</a></li>
-                <li><a href="birthRegistrationApply.php">Birth Registration Application</a></li>
+                <li><a href="birthCertificateApply.php">Birth Registration Application</a></li>
                 <li><a href="vaccinationReminder.html">Vaccination</a></li>
                 <li><a href="reissue.html">Certificate Reissue</a></li>
                 <li><a href="Patient_user/correctionRequest.html">Correction Request</a></li>
