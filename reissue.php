@@ -1,3 +1,46 @@
+<?php 
+include "database.php";
+
+  if (isset($_POST['submit'])) {
+
+    $ApplicantName = $_POST['ApplicantName'];
+
+    $birthRegNum = $_POST['birthRegNum'];
+
+    $contact = $_POST['contact'];
+
+    $email = $_POST['email'];
+
+    $reason = $_POST['reason'];
+
+    $message = $_POST['message'];
+
+    $sql = "INSERT INTO `reissueapp_t`(`applicantName`, `birthRegistrationNum`, `contactNum`, `email`, `reason`, `additionalInfo`) VALUES ('$ApplicantName','$birthRegNum','$contact','$email','$reason','$message')";
+
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+
+      echo "<script>console.log('New record created successfully!');</script>";
+
+    }else{
+
+      echo "Error:". $sql . "<br>". $conn->error;
+
+    } 
+
+    $conn->close();
+
+  }
+?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +57,8 @@
             <ul class="nav-links">
                 <li><a href="parent_dashboard.html">Home</a></li>
                 <li><a href="#">Vaccination</a></li>
-                <li><a href="reissue.html">Certificate Reissue</a></li>
-                <li><a href="Patient_user/correctionRequest.html">Correction Request</a></li>
+                <li><a href="reissue.php">Certificate Reissue</a></li>
+                <li><a href="./patient_user/correction.html">Correction Request</a></li>
                 <li><a href="index.html" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
@@ -23,10 +66,10 @@
     <section class="reissueSection">
         <div class="reissueContainer">
             <h2>Birth Certificate Reissue Form</h2>
-            <form action="#" method="post" class="reissueForm" onsubmit="submitForm(event)">
+            <form action="#" method="POST" class="reissueForm" onsubmit="submitForm(event)">
 
                 <label for="Applicant Name">Applicant Name</label>
-                <input type="text" name="Applicant Name" id="Applicant Name" required>
+                <input type="text" name="ApplicantName" id="ApplicantName" required>
 
 
 
@@ -51,14 +94,13 @@
                 <label for="message">Additional Information</label>
                 <textarea name="message" id="message" rows="4" placeholder="Any additional details..."></textarea>
                 
-                <button type="submit" onclick="submitForm()">Submit Application</button>
+                <button type="submit" name="submit" value="submit">Submit Application</button>
             </form>
         </div>
     </section>  
 
 
-    <script src="reissue.js"></script>
-    <script src="server.js"></script>
+  
 </body>
 </html>
 
