@@ -55,12 +55,10 @@ include "database.php";
         <h1>Birth Record Communication System</h1>
         <nav>
             <ul class="nav-links">
-                <li><a href="parent_dashboard.html">Home</a></li>
+                <li><a href="parent_dashboard.php">Home</a></li>
                 <li><a href="#">Vaccination</a></li>
                 <li><a href="reissue.php">Certificate Reissue</a></li>
-                <li><a href="./patient_user/correction.html">Correction Request</a></li>
-                <li><a href="reissue.html">Certificate Reissue</a></li>
-                <li><a href="Patient_user/correctionRequest.html">Correction Request</a></li>
+                <li><a href="Patient_user/correction.html">Correction Request</a></li>
                 <li><a href="index.html" onclick="logout()">Logout</a></li>
             </ul>
         </nav>

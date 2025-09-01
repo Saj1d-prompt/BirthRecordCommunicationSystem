@@ -11,7 +11,7 @@ const char* ssid = "Jb";
 const char* password = "17429146";
 
 // Server URL
-const char* serverURL = "http://192.168.0.136/esp32/add_newborn.php";
+const char* serverURL = "http://192.168.0.104/esp32/add_newborn.php";
 
 // HX711 pins
 #define HX711_DOUT 19
