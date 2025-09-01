@@ -347,7 +347,8 @@ $result = $conn->query($sql);
             <ul class="nav-links">
                 <li><a href="admin_dashboard.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#"><i class="fas fa-syringe"></i> Vaccination</a></li>
-                <li><a href="#"><i class="fas fa-edit"></i> Correction Request</a></li>
+                <li><a href="correctionViewAdmin.html"><i class="fas fa-edit"></i> Correction Request</a></li>
+                <li><a href="dataAnalysis.html">Data Analysis</a></li>
                 <li><a href="#"><i class="fas fa-history"></i> Application History</a></li>
                 <li><a href="index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>

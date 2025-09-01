@@ -35,6 +35,7 @@ if (isset($_POST['reg_number']) && isset($_POST['status'])) {
           <li><a href="#">Vaccination Data</a></li>
           <li><a href="correctionViewAdmin.html">Correction Requests</a></li>
           <li><a href="reissueAdminView.php">Reissue Requests</a></li>
+          <li><a href="dataAnalysis.html">Data Analysis</a></li>
           <li><a href="index.html" onclick="logout()">Logout</a></li>
         </ul>
       </nav>

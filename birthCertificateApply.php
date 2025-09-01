@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="parent_dashboard.php">Home</a></li>
                 <li><a href="birthRegistrationApply.php">Birth Registration Application</a></li>
                 <li><a href="vaccinationReminder.html">Vaccination Reminder</a></li>
-                <li><a href="reissue.html">Certificate Reissue</a></li>
+                <li><a href="reissue.php">Certificate Reissue</a></li>
                 <li><a href="./Patient_user/correction.html">Correction Request</a></li>
                 <li><a href="index.html" onclick="logout()">Logout</a></li>
             </ul>
